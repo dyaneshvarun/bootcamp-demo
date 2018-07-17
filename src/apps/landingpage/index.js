@@ -19,7 +19,7 @@ export default class LandingPage extends Component {
 	}
 
 	handleSearchPress() {
-        this.props.navigation.navigate('Search', {
+        this.props.navigation.navigate('Bootcamp', {
             query: this.state.text,
         });
 	}

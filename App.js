@@ -3,6 +3,7 @@ import {StatusBar, Platform, View} from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import LandingPage from './src/apps/landingpage'
 import Search from './src/apps/search'
+import Bootcamp from './src/apps/bootcamp'
 
 export default class App extends React.Component {
 	
@@ -31,6 +32,9 @@ const RootNavigator = createStackNavigator(
 					marginTop: Platform.OS === 'ios' ? 0 : -StatusBar.currentHeight
 				},
 			})
+		},
+		Bootcamp:{
+			screen: Bootcamp
 		}
 	},
 	{
