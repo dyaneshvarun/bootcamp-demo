@@ -29,23 +29,20 @@ export default class Search extends Component {
     keyExtractor = (item) => item.styleid
     
     async fetchProducts() {
-        this.setState({
-            loading: true,
-        });
-        const { navigation } = this.props;
-        const query = navigation.getParam('query', '');
-        let url = `http://developer.myntra.com/search/data/${query}`;
-
-        // Networking using fetch  & async-await
-        // Read more: https://facebook.github.io/react-native/docs/network.html
-        let response = await fetch(url, {
-            method: 'GET',
-        });
-        let responseJson = await response.json();
-        this.setState({
-            loading: false,
-            products: responseJson.data.results.products,
-        });
+		const query = this.props.navigation.getParam('query','');
+		let url = `http://developer.myntra.com/search/data/${query}`;
+		/*fetch(url)
+			.then(result => result.json())
+			.then(r => alert(r.data.results.products.length))
+			.catch(e=>alert(e));*/ // Another way to fetch from URL
+		const response = await fetch(url);
+		const responseJson = await response.json();
+		this.setState({
+			products: responseJson.data.results.products,
+			loading:true
+		})
+		//alert(JSON.stringify(this.state.products));
+        
     }
 
     renderItem ({ index, item }) {
